@@ -1,0 +1,131 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@1,600&display=swap'); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Germania+One&display=swap'); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,500&display=swap'); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap'); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap'); */
+
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    /* font-family: 'Expletus Sans', cursive; */
+    /* font-family: 'Germania One', cursive; */
+    /* font-family: 'Montserrat Alternates', sans-serif; */
+    /* font-family: 'Electrolize', sans-serif; */
+    /* font-family: 'Fredoka One', cursive; */
+    /* font-family: 'Iceland', cursive; */
+    font-size: 14px;
+}
+
+.main {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* background-color: aquamarine; */
+    min-height: 700px;
+    background: url('../bgimages/logo11.jpg') no-repeat center center/cover;
+}
+
+.simplemenu {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 1em;
+    text-align: center;
+    ;
+}
+
+.otherthings {
+    margin: 0 auto;
+}
+
+.links a {
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+    color: green;
+}
+
+.details {
+    margin: 10px 10px;
+}
+
+.gparticulars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 10px 20px 10px 20px;
+}
+
+#mysearch {
+    background-color: transparent;
+    border: none;
+}
+
+.mybuts {
+    border-radius: 15px;
+    border: none;
+}
+
+.btnaddnew {
+    border-radius: 10px;
+}
+
+.modal-body {
+    background-color: #3a3736;
+}
+
+.btndowns{
+    background-color: green;
+
+}
+
+.modal-body input {
+    background-color: transparent;
+}
+.table a {
+    color:#fff;
+    text-decoration: none;
+}
+form select {
+    background-color: #3a3736;
+}
+
+@media  (max-width:600px) {
+    .gparticulars {
+        grid-template-columns: 1fr;
+        margin: 10px 20px 10px 20px;
+    }
+    table {
+        display: block;
+    }
+    table caption {
+        display: inline-block;
+    }
+    table tr {
+        display: list-item;
+        border: none;
+        border-top: solid thin red;
+    }
+    table th {
+        display: inline-block;
+        border: solid thin gray;
+        margin-right: 0.2rem;
+    }
+    thead {
+        position: sticky;
+        top: 0;
+    }
+    table td {
+        display: inline-block;
+        border: solid thin gray;
+        margin-right: 0.2rem;
+    }
+}

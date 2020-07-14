@@ -1,0 +1,12 @@
+Granteename:A Bright Child Uganda,paddress:,contperson:Lwanga Isaac,contphone:0701285046,Districtcode:24,Sectorcode:3,fileno:w2/01/1397/2017,entype:sd1,pwindow:2,startdate:2018-09-10,enddate:,duration:3,Appbudget:37497000.00,grcont:3930000.00,dform:D,numroll:60,catid:1,catcreteria:1,oldfile:w2/01/1397/2017,updating:yes
+
+
+
+"0":{"fileno":"w2\/01\/1397\/2017","Beneficiaryno":15,"entype":"sd1","Granteename":"A Bright Child Uganda","paddress":"","contperson":"Lwanga Isaac","contphone":"0701285046","Districtcode":24,"Sectorcode":3,"pwindow":2,"duration":4,"startdate":"2018-09-10","enddate":"2018-09-14","Appbudget":"37497000.00","grcont":"3930000.00","dform":"D","numroll":60,"emppass":"nopass","catid":1,"catcreteria":1,"Entitytypename":"SDF Grantee","Sectordescription":"Manufacturing","description":"No category Specified","catdes":"No Criteria Set","Districtname":"Bukomansimbi"},"uappnum":"41827","uappbudget":"32363626888.00","uownbudget":"7558179428.39","errmsg":"Record updated","filenonew":"w2\/01\/1397\/2017"}
+
+
+fileno:int/01/100/2018
+adding:yes
+amount:450000
+datepaid:2020-02-26
+ownamount:0.00

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script src='js/jquery.js'></script>
+    <title>Testing</title>
+    <style>
+        #drag {
+            width: 150px;
+            height: 150px;
+            background-color: blueviolet;
+        }
+
+        .newrow {
+            background-color: black;
+            color: white;
+        }
+
+        #pic2 {
+            margin:25px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JQuery Draggable</h1>
+    <TABLE BORDER=1>
+        <thead>
+            <TR>
+                <TH>userid</TH>
+                <TH>fulname</TH>
+                <TH>kpass</TH>
+                <TH>utype</TH>
+            </TR>
+        </thead>
+        <tbody>
+            <TR>
+                <TD>betty</TD>
+                <TD>Maliza Betty</TD>
+                <TD>syiIU6yMaRdgY</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>bwoye</TD>
+                <TD>Samuel Bwoye</TD>
+                <TD>sywRvsbGjnYSY</TD>
+                <TD>Ad</TD>
+            </TR>
+            <TR>
+                <TD>Caroline</TD>
+                <TD>Caroline</TD>
+                <TD>sy.C6AI21j8oo</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>Collins</TD>
+                <TD>Collins</TD>
+                <TD>syyLeGMBBrEAM</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>Elvis</TD>
+                <TD>Elvis</TD>
+                <TD>syUcd2aINpFrQ</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>Geoffrey</TD>
+                <TD>Otim Geoffrey</TD>
+                <TD>sy0zcVSdJAkPY</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>gloria</TD>
+                <TD>Owner Admin</TD>
+                <TD>sy67M5SFAlttk</TD>
+                <TD>Ad</TD>
+            </TR>
+            <TR>
+                <TD>Joan</TD>
+                <TD>Joan</TD>
+                <TD>syJ2fQGZIlK8A</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>naherya</TD>
+                <TD>Naherya Morine</TD>
+                <TD>sypMlgZFXwQUk</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>PAUL</TD>
+                <TD>OTIMPAUL</TD>
+                <TD>syYBbBhtouU3U</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>WFRED</TD>
+                <TD>Wakulya Fred</TD>
+                <TD>syJ.DgtSHew.c</TD>
+                <TD>Del</TD>
+            </TR>
+        </tbody>
+    </TABLE>
+    <!-- <div id='mypics'>
+        <img src='testimages/hotel2.jpg'>
+        <img src='testimages/hotel3.jpg'>
+        <img src='testimages/jinjarafting.jpg'>
+        <img src='testimages/masaimara.jpg'> -->
+
+    </div>
+    <img src='testimages/hotel2.jpg' id='pic2'>
+
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia possimus totam quos sint laudantium, sed quidem impedit voluptas laboriosam ratione enim nulla aliquam alias deserunt natus, dolore esse incidunt </p>
+
+    <TABLE BORDER=1>
+        <thead>
+            <TR>
+                <TH>userid</TH>
+                <TH>fulname</TH>
+                <TH>kpass</TH>
+                <TH>utype</TH>
+            </TR>
+        </thead>
+        <tbody>
+            <TR>
+                <TD>betty</TD>
+                <TD>Maliza Betty</TD>
+                <TD>syiIU6yMaRdgY</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>bwoye</TD>
+                <TD>Samuel Bwoye</TD>
+                <TD>sywRvsbGjnYSY</TD>
+                <TD>Ad</TD>
+            </TR>
+            <TR>
+                <TD>Caroline</TD>
+                <TD>Caroline</TD>
+                <TD>sy.C6AI21j8oo</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>Collins</TD>
+                <TD>Collins</TD>
+                <TD>syyLeGMBBrEAM</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>Elvis</TD>
+                <TD>Elvis</TD>
+                <TD>syUcd2aINpFrQ</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>Geoffrey</TD>
+                <TD>Otim Geoffrey</TD>
+                <TD>sy0zcVSdJAkPY</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>gloria</TD>
+                <TD>Owner Admin</TD>
+                <TD>sy67M5SFAlttk</TD>
+                <TD>Ad</TD>
+            </TR>
+            <TR>
+                <TD>Joan</TD>
+                <TD>Joan</TD>
+                <TD>syJ2fQGZIlK8A</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>naherya</TD>
+                <TD>Naherya Morine</TD>
+                <TD>sypMlgZFXwQUk</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>PAUL</TD>
+                <TD>OTIMPAUL</TD>
+                <TD>syYBbBhtouU3U</TD>
+                <TD>Del</TD>
+            </TR>
+            <TR>
+                <TD>WFRED</TD>
+                <TD>Wakulya Fred</TD>
+                <TD>syJ.DgtSHew.c</TD>
+                <TD>Del</TD>
+            </TR>
+        </tbody>
+    </TABLE>
+    <script>
+        $(document).ready(function () {
+            var mh = $('img:first').prop('height');
+            var mw = $('img:first').prop('width');
+        });
+    </script>
+</body>
+
+</html>

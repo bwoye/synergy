@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/assess.js"></script>
+    <script src="js/getspin.js"></script>
+
+    <title>Synergy Assessement</title>
+    <style>
+        #finds {
+            border: none;
+            background-color: #f8f9fa;
+            padding-top: 7px;
+        }
+
+        .mybuts {
+            color: white;
+            height: 20px;
+            font-size: 10px;
+            line-height: 10px;
+        }
+
+        .finished{
+            background-color: rgb(180, 223, 252);
+            color:red;
+        }
+
+
+        .allrecs {
+
+            position: fixed;
+            top: 120px;
+            /* bottom: 50px; */
+            left: 110px;
+            /*margin: 4px, 4px;
+            padding: 4px; */
+            background-color: rgb(205, 235, 205);
+            width: 500px;
+            max-height: 450px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .dropedout{
+            background-color: brown;
+            color:white;
+        }
+
+        #listing {
+            margin: 10px 10px auto;
+            align-self: center;
+        }
+
+        /* scroll css starta here */
+        #myBtn {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Fixed/sticky position */
+            bottom: 70px;
+            /* Place the button at the bottom of the page */
+            right: 30px;
+            /* Place the button 30px from the right */
+            z-index: 99;
+            /* Make sure it does not overlap */
+            border: none;
+            /* Remove borders */
+            outline: none;
+            /* Remove outline */
+            background-color: red;
+            /* Set a background color */
+            color: white;
+            /* Text color */
+            cursor: pointer;
+            /* Add a mouse pointer on hover */
+            padding: 5px;
+            /* Some padding */
+            border-radius: 5px;
+            /* Rounded corners */
+            font-size: 10px;
+            font-weight: bolder;
+            width: 50px;
+            /* Increase font size */
+        }
+
+
+        #myBtn:hover {
+            background-color: #555;
+            /* Add a dark-grey background on hover */
+        }
+
+        #htitles {
+            width: 950px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #table1 {
+            /* text-align:center; */
+            width: 950px;
+
+        }
+
+        #forex {
+            width: 950px;
+            text-align: left;
+            border: 0.5px solid;
+        }
+
+        #forex tr {
+            height: 30px;
+        }
+
+        #forex tr:hover {
+            background-color: tomato;
+        }
+
+        table {
+            font-size: 12px;
+        }
+
+        .smtoolsl {
+            padding-left: 50px;
+        }
+
+        .badheader {
+            text-align: center;
+            border: 1px solid;
+            width: 280px;
+        }
+
+        .smtoolsr {
+            padding-right: 25px;
+        }
+
+        #ratingdiv {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        #ratemodal {
+            position: fixed;
+            top: 50px;
+            color: white;
+    
+            background-color: rgb(14, 93, 117);
+            width: 1000px;
+            max-height: 600px;
+            /* overflow-y: auto; */
+            display: none;
+
+        }
+
+        #makevals {
+            background-color: rgb(14, 93, 117);
+            width: 1000px;
+            max-height: 500px;
+            /* overflow-y: auto; */
+            display: none;
+        }
+
+        .thefinds{
+            position:absolute;
+            z-index: 3;
+            max-height: 300px;
+            max-width: 220px;
+            min-width: 220px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .thefinds>div{
+            background-color: black;
+            color:#fff;          
+        }
+
+        .thefinds>div:hover{
+            background-color: rgb(7, 100, 207);
+            color:#fff;          
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div id="mymenus" class='sticky-top'></div>
+
+        <div class='row'>
+            <div class="col-md-3">
+                <div id="cfile"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="cname"></div>
+            </div>
+            <div class="col-md-3">
+                <div id="cdist"></div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-12'>                
+                <input type='text' id='findit' placeholder="Search Grantee"><div class="thefinds"></div> | <select id='samples'></select>
+            </div>
+        </div>
+
+        <div class='row' style='padding-top:20px;'>
+            <div class='col-md-12'>
+                <div id="listing"></div>
+            </div>
+        </div>
+
+        <div class='row' style='height:20px;'>
+
+        </div>
+        <div class='allrecs'></div>
+        
+
+        <!-- http://localhost/synergy/details.html#placement -->
+
+        <!-- some hidden things -->
+        <input type='hidden' id='usefile'>
+        <input type='hidden' id='filehidden'>
+        <input type='hidden' id='sampletaken'>
+        <input type='hidden' id='kntool'>
+        <input type='hidden' id='ustool'>
+        <input type='hidden' id='aptool'>
+        <input type='hidden' id='doline'>
+        <input type='hidden' id='perms'>
+
+        <div id="allrecsdiv" class="allrecs"></div>
+
+        <!-- rating modal starts  -->
+
+        <div id="ratemodal">
+
+            <h4 class="modal_rating"></h4>
+            <div style='width:1000px;'><button class='btn btn-danger saverating' style='float:right'>X</button></div>
+            <div id='htitles'></div>
+            <div id='ratingdiv' style='color:white;'>
+
+            </div>
+            <input type='hidden' id='ratingfind'>
+        </div>
+
+        <div id='makevals'></div>
+    </div>
+
+    <!-- Scroll button here -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <script>
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+    <script src="js/boxes/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/boxes/bootbox.min.js"></script>
+    <script src="js/boxes/bootbox.locales.min.js"></script>
+</body>
+
+</html>

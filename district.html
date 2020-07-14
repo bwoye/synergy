@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/district.js"></script>
+    <script src="js/getspin.js"></script>
+
+    <title>Manage Districts</title>
+    <style>
+         .mybuts {
+            /* color: white; */
+            height: 20px;
+            font-size: 10px;
+            line-height: 10px;
+        }
+         #myBtn {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Fixed/sticky position */
+            bottom: 70px;
+            /* Place the button at the bottom of the page */
+            right: 30px;
+            /* Place the button 30px from the right */
+            z-index: 99;
+            /* Make sure it does not overlap */
+            border: none;
+            /* Remove borders */
+            outline: none;
+            /* Remove outline */
+            background-color: red;
+            /* Set a background color */
+            color: white;
+            /* Text color */
+            cursor: pointer;
+            /* Add a mouse pointer on hover */
+            padding: 5px;
+            /* Some padding */
+            border-radius: 5px;
+            /* Rounded corners */
+            font-size: 10px;
+            font-weight: bolder;
+            width:50px;
+            /* Increase font size */
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            /* Add a dark-grey background on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="mymenus"></div>
+        <div class='row'>
+            <div class='col-md-12'>
+                <h2>Manage Districts</h2>
+            </div>
+            
+        </div>
+        <div id="listing"></div>
+
+        <input type='hidden' id='perms'>
+       
+       
+        <div id="addmodal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button><br />
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="modal_title"></h4>
+                        <form method="post" id="insert_form">                            
+                            <label style='width:150px;'>Name</label>
+                            <input type="text" id="distname" name="distname" style='width:250px;' /><br /> 
+                            <label style='width:150px;'>Region</label>
+                            <select id='region' name='region'><option value='E'>Eastern</option><option value='N'>Northern</option><option value='S'>Southern</option><option value='W'>Western</option><option value='U'>Unknown</option></select><br />                       
+                            <input type='hidden' id='distcode'>
+                            <input type="submit" id='insertbtn' class='btn btn-success' name='insertbtn'
+                                value="Insert" />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <!-- Scroll button here -->
+     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+            window.onscroll = function () { scrollFunction() };
+    
+            function scrollFunction() {
+                if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                    document.getElementById("myBtn").style.display = "block";
+                } else {
+                    document.getElementById("myBtn").style.display = "none";
+                }
+            }
+    
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+        </script>
+    <script src="js/boxes/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/boxes/bootbox.min.js"></script>
+    <script src="js/boxes/bootbox.locales.min.js"></script>
+</body>
+
+</html>

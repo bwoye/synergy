@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grantee Reports</title>
+    <link rel="stylesheet" href="styles/granteestyle.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/grantee.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        .returnup {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div id="mymenus"></div>
+        <div class="gparticulars">
+
+        </div>
+        <div class="simplemenu">
+            <!-- <div class="links">
+                <a href='#' class='gmenus enrols'>View enrollment</a>
+            </div> -->
+            <div class="links">
+                <a href='#' class='gmenus reports'>Monthly Reports</a>
+            </div>
+            <div class="links">
+                <a href='#' class='gmenus monthups'>Upload Monthly report</a>
+            </div>
+            <div class="links">
+                <a href='#' class='gmenus quarterkyups'>Upload Quarterly report</a>
+            </div>
+            <div class="links">
+                <a href='#' class='gmenus passchange'>Change password</a>
+            </div>
+        </div>
+
+        <div class="details">
+            display everything else here
+        </div>
+        <div class="otherthings" style="display:none">
+
+        </div>
+    </div>
+
+    <div id="editmodal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button><br />
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal_title">Add Participant</h4>
+                    <form method="post" id="edit_form">
+                        <label style='width:150px;'>Full name</label>
+                        <input type="text" id="fulname" name="fulname" style='width:250px;' required /><br />
+                        <label style='width:150px;'>Skill Area</label>
+                        <select id='Skillcode' name='Skillcode' style='width:250px;''></select><br>                        
+                        <label style=' width:150px;'>Gender</label>
+                            <select id='Gender' name='Gender' style='width:250px;'>
+                                <option value='F'>F</option>
+                                <option value="M">M</option>
+                            </select><br>
+                            <label style='width:150px;'>Telephone</label>
+                            <input type="text" id="Phonecontact" name="Phonecontact" style='width:250px;'></br>
+                            <label style='width:150px;'>Email</label>
+                            <input type="text" id='email' name="email" style='width:250px;' /><br />
+                            <input type="hidden" id='recno' name="recno" /><br />
+                            <button type="submit" class='btn btn-success' id='insert' name="insert">Insert</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Array.prototype.forEach.call(document.querySelectorAll('.freturn'), function (button) {
+        //     const hiddenInput = document.querySelector('.returnup');
+
+        //     button.addEventListener('click', function () {
+        //         hiddenInput.click();
+        //     });
+
+        //     hiddenInput.addEventListener('change', function () {
+        //         var property = hiddenInput.files[0]; //document.getElementById('myfile').files[0];
+        //         var form_data = new FormData();
+        //         form_data.append('file', property)
+        //         form_data.append('fileins', "yes");
+        //         form_data.append("myperiod", $('#myperiod').val());
+
+        //         alert("The file is " + property);
+        //         //return false;
+
+        //         $.ajax({
+        //             url: 'php/grantee.php',
+        //             method: "POST",
+        //             cache: false,
+        //             processData: false,
+        //             contentType: false,
+        //             data: form_data,
+        //             success: function (some) {
+        //                 //suplabel.textContent = myprop.name;
+        //             }
+        //         });
+        //     });
+        // });
+    </script>
+    <script src="js/boxes/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/boxes/bootbox.min.js"></script>
+    <script src="js/boxes/bootbox.locales.min.js"></script>
+</body>
+
+</html>

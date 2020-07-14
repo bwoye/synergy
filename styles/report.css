@@ -1,0 +1,137 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.contains {
+    display: grid;
+    margin: 15px 20px 15px 20px;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: #000;
+    /* padding: 15px; */
+}
+
+.main-menu ul li {
+    list-style: none;
+    float: left;
+    margin-right: 20px;
+    padding-top: 18px;
+    position: relative;
+}
+
+.main-menu ul li a, .logo a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-menu ul li a:hover {
+    background-color: lightcoral;
+}
+
+.main-menu ul li ul {
+    display: none;
+    background-color:#000;
+    position: absolute;
+    width:100px;
+    border-radius: 0 0 5px 5px;
+}
+.main-menu ul li:hover  ul {
+    display: block;
+}
+
+.main-menu ul li ul li a {
+    padding: 0 10px;
+    display: inline;
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.others{
+   
+    display:grid;
+    color:#fff;    
+    background-image:linear-gradient(150deg,rgb(78, 129, 240),green);
+    background-image: center;
+    background-image: no-repeat;
+    background-image: cover;
+    grid-template-columns: repeat(5 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "sidebar results results results results";
+    grid-template-areas: "sidebar results results results results";
+    column-gap: 1em;
+}
+
+.noprint{
+    display:none;
+}
+
+.results{
+    grid-area:results;
+    background-color: transparent;
+    min-height:650px;
+}
+.sidebar{
+    grid-area:sidebar;
+    /* background-color:transparent; */
+    color:#fff;
+    min-width: 250px;
+    margin-left:10px;
+    /* display:grid;
+    grid-template-rows: auto; */
+}
+
+table{
+    border-collapse: collapse;    
+  
+}
+
+table thead th{
+    padding-right:3px;
+}
+
+table tbody tr{
+    border-bottom:1px solid;
+}
+
+table tbody td{
+   padding-right:10px;
+   padding-left:10px;
+}
+
+#skillsum > table th{
+    padding-left:5px;
+}
+#skillsum{
+    padding-top:50px;
+}
+
+.mymales{
+    background: coral;
+}
+
+@media print{
+    .results{
+        margin:25px 15px 25px 15px;
+        font-size:10px;
+        background-color: #fff;
+        color:black;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .main-menu{
+        display:none;
+    }
+
+    @page{
+        
+    }
+}

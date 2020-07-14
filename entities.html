@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="styles/mystyles.css" media="print">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/entities.js"></script>
+    <script src="js/getspin.js"></script>
+
+    <style>
+        #jumpmenu {
+            position: fixed;
+            left: 0;
+            top: 95%;
+            width: 8em;
+            margin-top: -2.5em;
+            color: #ffffff;
+            list-style: none;
+            /*color:red;*/
+            background-color: white;
+            opacity: 0.5;
+        }
+
+        #comment {
+            position: fixed;
+            right: 0;
+            top: 95%;
+            width: 8em;
+            margin-top: -2.5em;
+            color: #ffffff;
+            list-style: none;
+            /*color:red;*/
+            background-color: white;
+            opacity: 0.5;
+        }
+
+        #msearch {
+            border: none;
+            background-color: aqua;
+        }
+
+        #msearch:focus {
+            border: none;
+            background-color: yellow;
+        }
+
+        #found {
+            border: none;
+            background-color: aqua;
+        }
+
+        #mtbody {
+            font-size: 14px;
+        }
+
+        .btn_new_row {
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .modal-content {
+            background-color: rgb(77, 201, 139);
+        }
+
+        .btn-success {
+            height: 25px;
+            font-size: 15px;
+            line-height: 15px;
+        }
+
+        .modal-body {
+            background-color: rgb(199, 218, 208);
+        }
+
+        #mtbody {
+            background-color: #f8f9fa
+        }
+
+        thead th tr {
+            border: none;
+        }
+
+        thead tr {
+            background-color: aqua;
+        }
+
+        #insert_form,
+        #edit_form input:focus,
+        select:focus {
+            background-color: rgb(166, 225, 243);
+        }
+
+        #insert_form,
+        #edit_form input,
+        select {
+            background-color: #c7dad0;
+            border: none
+        }
+
+        /* scroll css start here */
+        #myBtn {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Fixed/sticky position */
+            bottom: 70px;
+            /* Place the button at the bottom of the page */
+            right: 30px;
+            /* Place the button 30px from the right */
+            z-index: 99;
+            /* Make sure it does not overlap */
+            border: none;
+            /* Remove borders */
+            outline: none;
+            /* Remove outline */
+            background-color: red;
+            /* Set a background color */
+            color: white;
+            /* Text color */
+            cursor: pointer;
+            /* Add a mouse pointer on hover */
+            padding: 5px;
+            /* Some padding */
+            border-radius: 5px;
+            /* Rounded corners */
+            font-size: 10px;
+            font-weight: bolder;
+            width: 50px;
+            /* Increase font size */
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            /* Add a dark-grey background on hover */
+        }
+
+        .mybuts {
+            color: white;
+            height: 20px;
+            font-size: 10px;
+            line-height: 10px;
+        }
+
+
+        table {
+            font-size: 12px;
+        }
+
+        .summaries {
+            min-height: 200px;
+            background-color: rgb(250, 235, 100);
+            font-size: 14px;
+        }
+
+        @media (max-width: 992px) {}
+
+        @media (max-width: 768px) {}
+
+        @media (max-width: 576px) {
+           
+        }
+    </style>
+    <title>Entities</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class='row'>
+            <div class='col-12 sticky-top'>
+                <div id="mymenus"></div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-4 col-sm-12'>
+                <h3>Budget</h3>
+                <span id='sdfbudget'></span><br><span id='ownbudget'></span>
+            </div>
+            <div class='col-md-4 col-sm-12'>
+                <h3>Enrollment</h3>
+                <span id='numroll'></span><br><span id='rollgender'></span>
+            </div>
+            <div class='col-md-4 col-sm-12'>
+                <h3>Status</h3>
+                <span id='completed'></span><br><span id='training'></span><br><span id='droped'></span>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-12 col-sm-6 col-12'>
+                <div id="mytable"></div>
+            </div>
+        </div>
+
+    </div>
+    <input type='hidden' id='perms'>
+    <!-- Scroll button here -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
+
+    <div id="addmodal" class="modal fade noprint">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button><br />
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal_title">Add new Entity</h4>
+                    <form method="post" id="insert_form">
+                        <label style='width:150px;'>File Number</label>
+                        <input type="text" id="fileno" name="fileno" style='width:250px;' required /><br />
+                        <label style='width:150px;'>Grantee Name</label>
+                        <input type="text" id="Granteename" name="Granteename" style='width:250px;' required /><br />
+                        <label style='width:150px;'>Type</label>
+                        <select id="entypesel" name="entypesel" style='width:250px;'></select></br>
+                        <label style='width:150px;'>Enrolled Number</label>
+                        <input type="number" id='Beneficiaryno' name="Beneficiaryno" style='width:250px;' readonly
+                            value='0' /><br />
+                        <label style='width:150px;'>Enrollment Allowed</label>
+                        <input type="number" id='numrole' name="numrole" style='width:250px;' value='0' /><br />
+                        <label style='width:150px;'>Window</label>
+                        <input type="number" id='pwindow' name="pwindow" style='width:250px;' /><br />
+                        <label style='width:150px;'>Address</label>
+                        <input type="text" id='paddress' name="paddress" style='width:250px;' /><br />
+                        <label style='width:150px;'>Contact Person</label>
+                        <input type="text" id='contperson' name="contperson" style='width:250px;' /><br />
+                        <label style='width:150px;'>Phone</label>
+                        <input type="text" id='contphone' name="contphone" style='width:250px;' /><br />
+                        <label style='width:150px;'>District</label>
+                        <select id='district' name='district' style='width:250px;' required></select><br />
+                        <label style='width:150px;'>Sector</label>
+                        <select id='Sectorcode' name='Sectorcode' style='width:250px;'></select><br />
+
+                        <label style='width:150px;'>Start Date</label>
+                        <input type="date" id='startdate' name="startdate" style='width:250px;' /><br />
+                        <label style='width:150px;'>Duration</label>
+                        <input type="number" id='duration' name="duration" min='0' max='48' style='width:50px;' />
+                        <select id='dform' name="dform" style='width:100px;'>
+                            <option value='D'>Days</option>
+                            <option value='M'>Months</option>
+                        </select><br />
+                        <label style='width:150px;'>SDF budget</label>
+                        <input type="number" id='Appbudget' name="Appbudget" step='0.01' style='width:250px;' /><br />
+                        <label style='width:150px;'>Own contribution</label>
+                        <input type="number" id='grcont' name="grcont" step='0.01' style='width:250px;' value="0" /><br />
+                        <label style='width:150px;'>Category</label>
+                        <select id='catid' name='catid' style='width:250px;'></select><br />
+                        <label style='width:150px;'>Criteria</label>
+                        <select id='catcreteria' name='catcreteria' style='width:250px;'></select><br />
+                        <input type="submit" class='btn btn-success' id='insert1' name="insert1" value="Insert" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="editmodal" class="modal fade noprint">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button><br />
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal_title">Edit Entity</h4>
+                    <form method="post" id="edit_form">
+                        <label style='width:150px;'>File Number</label>
+                        <input type="text" id="fileno1" name="fileno1" style='width:250px;' required /><br />
+                        <label style='width:150px;'>Grantee Name</label>
+                        <input type="text" id="Granteename1" name="Granteename1" style='width:250px;' required /><br />
+                        <label style='width:150px;'>Type</label>
+                        <select id="entype1sel" name="entype1sel" style='width:250px;'></select></br>
+                        <label style='width:150px;'>SDF budget</label>
+                        <input type="number" id='Appbudget1' name="Appbudget1" step='0.01' style='width:250px;' /><br />
+                        <label style='width:150px;'>Own contribution</label>
+                        <input type="number" id='grcont1' name="grcont1" step='0.01' style='width:250px;' /><br />
+                        <label style='width:150px;'>Enrolled Number</label>
+                        <input type="number" id='Beneficiaryno1' name="Beneficiaryno1" style='width:250px;' readonly
+                            value='0' /><br />
+                        <label style='width:150px;'>Enrollment Allowed</label>
+                        <input type="number" id='numroll1' name="numroll1" style='width:250px;' value='0' /><br />
+                        <label style='width:150px;'>Window</label>
+                        <input type="number" id='pwindow1' name="pwindow1" style='width:250px;' /><br />
+                        <label style='width:150px;'>Address</label>
+                        <input type="text" id='paddress1' name="paddress1" style='width:250px;' /><br />
+                        <label style='width:150px;'>Contact Person</label>
+                        <input type="text" id='contperson1' name="contperson1" style='width:250px;' /><br />
+                        <label style='width:150px;'>Phone</label>
+                        <input type="text" id='contphone1' name="contphone1" style='width:250px;' /><br />
+                        <label style='width:150px;'>District</label>
+                        <select id='district1' name='district1' style='width:250px;' required></select><br />
+                        <label style='width:150px;'>Sector</label>
+                        <select id='Sectorcode1' name='Sectorcode1' style='width:250px;'></select><br />
+                        <label style='width:150px;'>Start Date</label>
+                        <input type="date" id='startdate1' name="startdate1" style='width:250px;' /><br />
+                        <label style='width:150px;'>Duration</label>
+                        <input type="number" id='duration1' name="duration1" min='0' max='48' style='width:50px;' />
+                        <select id='dform1' name="dform1" style='width:100px;'>
+                            <option value='D'>Days</option>
+                            <option value='M'>Months</option>
+                        </select><br />
+                        <label style='width:150px;'>End Date</label>
+                        <input type="text" id='enddate1' name="enddate1" style='width:250px;' readonly />
+                        <!-- <input type='text' id='dweek' style='width:100px;' readonly><br /> -->
+                        <label style='width:150px;'>Category</label>
+                        <select id='catid1' name='catid1' style='width:250px;'></select><br />
+                        <label style='width:150px;'>Criteria</label>
+                        <select id='catcreteria1' name='catcreteria1' style='width:250px;'></select><br />
+
+                        <input type="hidden" id='oldfile' name="oldfile" />
+                        <button type="submit" class='btn btn-success' id='insert' name="insert">Update</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
+    <script src="js/boxes/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/boxes/bootbox.min.js"></script>
+    <script src="js/boxes/bootbox.locales.min.js"></script>
+</body>
+
+</html>

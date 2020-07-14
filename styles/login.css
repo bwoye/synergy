@@ -1,0 +1,156 @@
+.main-wrapper {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #ccc;
+}
+
+header nav {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+}
+
+header nav ul {
+    float: left;
+    line-height: 60px;
+}
+
+header nav ul li {
+    float: left;
+    list-style: none;
+    margin-right: 15px;
+}
+
+header nav ul li a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #111;
+    line-height: 63px;
+}
+
+header .nav-login {
+    float: right;
+}
+
+header .nav-login form {
+    float: left;
+    padding-top: 15px;
+    ;
+}
+
+header .nav-login form select {
+    float: left;
+    width: 140px;
+    height: 30px;
+    padding: 0px 10px;
+    margin-right: 10px;
+    border: none;
+    background-color: #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #111;
+    line-height: 30px;
+}
+
+
+header .nav-login form input {
+    float: left;
+    width: 140px;
+    height: 30px;
+    padding: 0px 10px;
+    margin-right: 10px;
+    border: none;
+    background-color: #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #111;
+    line-height: 30px;
+}
+
+header .nav-login form button {
+    float: left;
+    width: 60px;
+    height: 30px;
+    margin-right: 10px;
+    border: none;
+    background-color: #f3f3f3;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #111;
+    cursor: pointer;
+}
+
+header .nav-login form button:hover {
+    background-color: #ccc;
+}
+
+header .nav-login a {
+    display: block;
+    width: 150px;
+    float: left;
+    height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #111;
+    border: none;
+    background-color: #fff;
+    line-height: 63px;
+}
+
+.main-container {
+    padding-top: 40px;
+}
+
+.main-container h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    color: #111;
+    border: none;
+    line-height: 50px;
+    text-align: center;
+}
+
+.notices{
+    text-align: center;
+    color:red;
+}
+
+/*
+Change password style form 
+*/
+
+.changepass-form {
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+#changepass-table {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+#changepass-table td {
+    padding: 3px;
+    margin-right: 5px;
+}
+
+#changepass-table button {
+    width: 150px;
+    background-color: red;
+    color: #fff;
+    margin:0 auto;
+    display: block;
+}
+
+#results{
+    margin :0 auto;
+    width:400px;
+}

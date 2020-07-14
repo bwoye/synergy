@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/budget.js"></script>
+    <script src="js/getspin.js"></script>
+
+
+    <style>
+        #comment {
+            position: fixed;
+            right: 0;
+            top: 95%;
+            width: 8em;
+            margin-top: -2.5em;
+            color: #ffffff;
+            list-style: none;
+            /*color:red;*/
+            background-color: white;
+            opacity: 0.5;
+        }
+
+        .allrecs {
+            position: fixed;
+            background-color: rgb(205, 235, 205);
+            width: 500px;
+            /* max-height:600px;             */
+            overflow-y: auto;
+            display: none;
+        }
+
+
+        #msearch {
+            border: none;
+            background-color: aqua;
+        }
+
+        #msearch:focus {
+            border: none;
+            background-color: yellow;
+        }
+
+        #found {
+            border: none;
+            background-color: aqua;
+        }
+
+        #mtbody {
+            font-size: 14px;
+        }
+
+        .btn_new_row {
+            font-size: 12px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .modal-content {
+            background-color: rgb(77, 201, 139);
+        }
+
+        .btn-success {
+            height: 25px;
+            font-size: 15px;
+            line-height: 15px;
+        }
+
+        .modal-body {
+            background-color: rgb(199, 218, 208);
+        }
+
+        /* scroll css starta here */
+        #myBtn {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Fixed/sticky position */
+            bottom: 70px;
+            /* Place the button at the bottom of the page */
+            right: 30px;
+            /* Place the button 30px from the right */
+            z-index: 99;
+            /* Make sure it does not overlap */
+            border: none;
+            /* Remove borders */
+            outline: none;
+            /* Remove outline */
+            background-color: red;
+            /* Set a background color */
+            color: white;
+            /* Text color */
+            cursor: pointer;
+            /* Add a mouse pointer on hover */
+            padding: 5px;
+            /* Some padding */
+            border-radius: 5px;
+            /* Rounded corners */
+            font-size: 10px;
+            font-weight: bolder;
+            width: 50px;
+            /* Increase font size */
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            /* Add a dark-grey background on hover */
+        }
+
+        .mybuts {
+            color: white;
+            height: 20px;
+            font-size: 10px;
+            line-height: 10px;
+        }
+
+
+        table {
+            font-size: 12px;
+        }
+
+        .suggestions{
+            position: absolute;
+            max-width: 200px;
+            max-height: 350px;           
+            overflow-x: hidden;
+            overflow-y: auto;
+            z-index:4;
+        }
+
+        .suggestions > div{
+            background-color: #000;
+            color:#fff;
+        }
+
+        .myfinds{
+            position:relative;
+        }
+
+        .suggestions > div:hover{
+            background-color:rgb(26, 174, 243);
+        }
+    </style>
+    <title>Budget</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class='row'>
+            <div class='col-md-12'>
+                <div id="mymenus" class='sticky-top'></div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-12 myfinds'>
+                <input type="text" id='findit' placeholder='search'>
+                <div class="suggestions"></div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-4'>
+                <div id="divfileno"></div>
+            </div>
+            <div class='col-md-8'>
+                <div id="diventity"></div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-3'>
+                <div id="divstart"></div>
+            </div>
+            <div class='col-md-3'>
+                <div id="divend"></div>
+            </div>
+            <div class='col-md-3'>
+                <div id="divapp"></div>
+            </div>
+            <div class='col-md-3'>
+                <div id="divown"></div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div id="listing"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div id="allrecsdiv" class="allrecs"></div>
+    <div>
+        <input type='hidden' id='filehide'>
+        <input type='hidden' id='amthidden'>
+        <input type='hidden' id='ownhidden'>
+        <input type='hidden' id='perms'>
+    </div>
+
+    <!-- Scroll button here -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
+    <div id="addmodal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button><br />
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal_title">Add Payment</h4>
+                    <form method="post" id="insert_form">
+
+                        <label style='width:150px;'>Date Paid</label>
+                        <input type="date" id='txtdate' name="txtdate" style='width:250px;' /><br />
+                        <label style='width:150px;'>Amount</label>
+                        <input type="number" step='0.01' id="txtamount" name="txtamount" style='width:250px;'
+                            required value='0.00'/><br />
+                        <label style='width:150px;'>Own amount</label>
+                        <input type="number" step='0.01' id="txtownamount" name="txtownamount" style='width:250px;'
+                            required  value='0.00'/><br />
+                        <input type='hidden' id='txtrecno' name='txtrecno'>
+                        <input type="submit" class='btn btn-success' id='insert' name="insert" value="Insert" />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
+    <script src="js/boxes/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/boxes/bootbox.min.js"></script>
+    <script src="js/boxes/bootbox.locales.min.js"></script>
+</body>
+
+</html>
